@@ -16,12 +16,9 @@ composer require 7Lab/laravel-remote-logging
 
 The package will automatically register itself.
 
-You can publish the config file with:
+You can publish the config files with:
 ```bash
 php artisan vendor:publish --provider="SevenLab\RemoteLogging\RemoteLoggingServiceProvider"
-```
-
-This is the contents of the published config file (`config/remote-logging.php`).
 ```
 
 And finally you should install the exception handling in the `report` function in the Exception handler (`app/Exceptions/Handler.php`). 
