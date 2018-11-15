@@ -1,0 +1,53 @@
+{
+    "name": "7lab/laravel-remote-logging",
+    "description": "Log errors to a remote server",
+    "keywords": [
+        "7lab",
+        "laravel-remote-logging",
+        "laravel",
+        "logging",
+        "remote-logging",
+        "remote"
+    ],
+    "homepage": "https://github.com/7lab/laravel-remote-logging",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Niels Kramer",
+            "email": "niels@7lab.nl",
+            "homepage": "https://www.7lab.nl",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.0",
+        "laravel/framework": "5.5.*|5.6.*|5.7.*",
+        "illuminate/support": "5.5.*|5.6.*|5.7.*",
+        "spatie/laravel-failed-job-monitor": "^3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.5.4|^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SevenLab\\RemoteLogging\\Tests\\": "tests",
+            "SevenLab\\RemoteLogging\\": "src/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SevenLab\\RemoteLogging\\RemoteLoggingServiceProvider"
+            ],
+            "aliases": {
+                "RemoteLogging": "SevenLab\\RemoteLogging\\Facades\\RemoteLogging"
+            }
+        }
+    }
+}
