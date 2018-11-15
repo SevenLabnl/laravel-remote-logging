@@ -22,8 +22,8 @@ class RemoteLoggingServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '../config/remote-logging.php' => config_path('remote-logging.php'),
-            __DIR__ . '../config/failed-job-monitor.php' => config_path('failed-job-monitor.php'),
+            __DIR__ . '/../config/remote-logging.php' => config_path('remote-logging.php'),
+            __DIR__ . '/../config/failed-job-monitor.php' => config_path('failed-job-monitor.php'),
         ], 'config');
     }
 
