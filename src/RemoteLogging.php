@@ -6,8 +6,8 @@ use GuzzleHttp\Client;
 
 class RemoteLogging
 {
-    protected $client;
     protected $enabled;
+    protected $client;
 
     public function __construct($config)
     {
