@@ -16,8 +16,9 @@ class RemoteLoggingChannel
     public function send($notifiable, Notification $notification)
     {
         $data = $notification->toDashboard($notifiable);
+
         if (app()->bound('remote-logging')) {
-            app('remote-logging')->sendFaildJob($data);
+            app('remote-logging')->sendFailedJob($data);
         }
     }
 }

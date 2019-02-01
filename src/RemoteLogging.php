@@ -2,7 +2,9 @@
 
 namespace SevenLab\RemoteLogging;
 
+use Exception;
 use GuzzleHttp\Client;
+use Illuminate\Support\Arr;
 
 class RemoteLogging
 {
@@ -11,12 +13,12 @@ class RemoteLogging
 
     public function __construct($config)
     {
-        $this->enabled = $config['enabled'];
+        $this->enabled = config('remote-logging.enabled');
         $this->client =  new Client([
-            'base_uri' => $config['url'],
+            'base_uri' => config('remote-logging.url'),
             'headers' => [
                 'Accept' => 'application/json',
-                'Authorization' => 'Bearer ' . $config['token'],
+                'Authorization' => 'Bearer ' . config('remote-logging.token'),
             ]
         ]);
     }
@@ -26,12 +28,12 @@ class RemoteLogging
      *
      * @param \Throwable|\Exception $exception The Throwable/Exception object.
      * @param array                 $data      Additional attributes to pass with this event.
-     * @return string|null
+     * @return void
      */
-    public function captureException($exception, $data = null, $logger = null, $vars = null)
+    public function captureException(Exception $exception)
     {
-        if ($data === null) {
-            $data = array();
+        if ($this->enabled === false || $this->shouldntReport($exception)) {
+            return;
         }
 
         $message = $exception->getMessage();
@@ -43,39 +45,59 @@ class RemoteLogging
             $code = $exception->getStatusCode();
         } else {
             $code = $exception->getCode();
-            if ($code === 0) {
-                $code = 500;
-            }
         }
 
-        $data['type'] = 'Laravel';
-        $data['status_code'] = $code;
-        $data['error'] = $message;
-        $data['file'] = $exception->getFile();
-        $data['line'] = $exception->getLine();
-        $data['env'] = app()->environment();
-        $data['url'] = request()->fullUrl();
-        $data['stacktrace'] = $exception->getTraceAsString();
+        $data = [
+            'type' => 'Laravel',
+            'status_code' => $code,
+            'error' => $message,
+            'file' => $exception->getFile(),
+            'line' => $exception->getLine(),
+            'stacktrace' => $exception->getTraceAsString(),
+            'env' => app()->environment(),
+            'url' => request()->fullUrl(),
+        ];
 
-
-        return $this->sendTo('logs', $data);
+        $this->sendTo('logs', $data);
     }
-    
-    public function sendFaildJob($data)
+
+    public function sendFailedJob($data)
     {
-        return $this->sendTo('failed-job', $data);
+        $this->sendTo('failed-job', $data);
     }
-
 
     protected function sendTo($url, $data)
     {
-        if ($this->enabled) {
-            return $this->client->post($url, [
+        try {
+            $this->client->post($url, [
                 'form_params' => $data
             ]);
-        }
-        return false;
+        } catch (Exception $e) { }
     }
 
+    /**
+     * Determine if the exception should be reported.
+     *
+     * @param  \Exception  $e
+     * @return bool
+     */
+    public function shouldReport(Exception $exception)
+    {
+        return ! $this->shouldntReport($exception);
+    }
 
+    /**
+     * Determine if the exception is in the "do not report" list.
+     *
+     * @param  \Exception  $e
+     * @return bool
+     */
+    protected function shouldntReport(Exception $exception)
+    {
+        $dontReport = config('remote-logging.dontReport');
+
+        return ! is_null(Arr::first($dontReport, function ($type) use ($exception) {
+            return $e instanceof $type;
+        }));
+    }
 }
