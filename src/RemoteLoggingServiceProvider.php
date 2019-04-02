@@ -29,5 +29,9 @@ class RemoteLoggingServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/../config/remote-logging.php', 'remote-logging');
         $this->mergeConfigFrom(__DIR__.'/../config/failed-job-monitor.php', 'failed-job-monitor');
+
+        $this->app->singleton('remote-logging', function ($app) {
+            return new RemoteLogging();
+        });
     }
 }

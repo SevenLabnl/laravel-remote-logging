@@ -11,7 +11,7 @@ class RemoteLogging
     protected $enabled;
     protected $client;
 
-    public function __construct($config)
+    public function __construct()
     {
         $this->enabled = config('remote-logging.enabled');
         $this->client =  new Client([
@@ -97,7 +97,7 @@ class RemoteLogging
         $dontReport = config('remote-logging.dontReport');
 
         return ! is_null(Arr::first($dontReport, function ($type) use ($exception) {
-            return $e instanceof $type;
+            return $exception instanceof $type;
         }));
     }
 }
