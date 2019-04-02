@@ -2,7 +2,7 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Total Downloads](https://img.shields.io/packagist/dt/7Lab/laravel-remote-logging.svg?style=flat-square)](https://packagist.org/packages/7Lab/laravel-remote-logging)
 
-# Cache responses
+# Remote logging
 This Laravel package send the errors or failed jobs occuring in your application to an external server. 
 For example to display these errors or failed jobs on a dashboard like the [spatie/dashboard.spatie.be](https://github.com/spatie/dashboard.spatie.be).
 
