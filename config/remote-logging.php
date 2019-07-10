@@ -15,7 +15,8 @@ return [
     /*
      * Specify the url that will be used for remote logging.
      */
-    'url' => env('REMOTELOGGING_URL'),
+    'error-url' => env('REMOTELOGGING_ERROR_URL'),
+    'failed-job-url' => env('REMOTELOGGING_FAILED_JOB_URL'),
 
     /*
      * The exceptions that should be excluded from remote logging.
