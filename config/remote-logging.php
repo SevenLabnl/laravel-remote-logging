@@ -5,7 +5,7 @@ return [
 	/*
      * Determine if remote logging should be enabled.
      */
-    'enabled' => env('REMOTELOGGING_ENABLED', true),
+    'enabled' => env('REMOTELOGGING_ENABLED', false),
 
     /*
      * Specify the Autorization Bearer token that will be used for remote logging.
