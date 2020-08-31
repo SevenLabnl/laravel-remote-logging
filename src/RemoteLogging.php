@@ -15,6 +15,7 @@ class RemoteLogging
     {
         $this->enabled = config('remote-logging.enabled');
         $this->client =  new Client([
+            'base_uri' => config('remote-logging.url'),
             'headers' => [
                 'Accept' => 'application/json',
                 'Authorization' => 'Bearer ' . config('remote-logging.token'),
@@ -57,18 +58,18 @@ class RemoteLogging
             'url' => request()->fullUrl(),
         ];
 
-        $this->sendTo(config('remote-logging.error-url'), $data);
+        $this->sendTo('projects/error/logs', $data);
     }
 
     public function sendFailedJob($data)
     {
-        $this->sendTo(config('remote-logging.failed-job-url'), $data);
+        $this->sendTo('projects/error/failed-job', $data);
     }
 
-    protected function sendTo($url, $data)
+    protected function sendTo($path, $data)
     {
         try {
-            $this->client->post($url, [
+            $this->client->post($path, [
                 'form_params' => $data
             ]);
         } catch (Exception $e) { }
