@@ -10,7 +10,7 @@ return [
     /*
      * Specify the Autorization Bearer token that will be used for remote logging.
      */
-    'token' => env('REMOTELOGGING_TOKEN'),
+    'token' => env('LAB_TOKEN'),
 
     /*
      * Specify the url that will be used for remote logging.
