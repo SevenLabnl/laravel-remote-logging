@@ -13,10 +13,9 @@ return [
     'token' => env('LAB_TOKEN'),
 
     /*
-     * Specify the url that will be used for remote logging.
+     * Specify the base url that will be used.
      */
-    'error-url' => env('REMOTELOGGING_ERROR_URL'),
-    'failed-job-url' => env('REMOTELOGGING_FAILED_JOB_URL'),
+    'url' => env('LAB_BASE_URL'),
 
     /*
      * The exceptions that should be excluded from remote logging.
