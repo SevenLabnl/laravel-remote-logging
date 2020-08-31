@@ -58,12 +58,12 @@ class RemoteLogging
             'url' => request()->fullUrl(),
         ];
 
-        $this->sendTo('projects/error', $data);
+        $this->sendTo('projects/error/logs', $data);
     }
 
     public function sendFailedJob($data)
     {
-        $this->sendTo('projects/error', $data);
+        $this->sendTo('projects/error/failed-job', $data);
     }
 
     protected function sendTo($path, $data)
