@@ -2,9 +2,9 @@
 
 namespace SevenLab\RemoteLogging;
 
-use Exception;
 use GuzzleHttp\Client;
 use Illuminate\Support\Arr;
+use Throwable;
 
 class RemoteLogging
 {
@@ -26,11 +26,11 @@ class RemoteLogging
     /**
      * Log an exception to the server defined in remote-logging config
      *
-     * @param \Throwable|\Exception $exception The Throwable/Exception object.
-     * @param array                 $data      Additional attributes to pass with this event.
+     * @param \Throwable $exception The Throwable/Exception object.
+     * @param array $data Additional attributes to pass with this event.
      * @return void
      */
-    public function captureException(Exception $exception)
+    public function captureException(Throwable $exception)
     {
         if ($this->enabled === false || $this->shouldntReport($exception)) {
             return;
