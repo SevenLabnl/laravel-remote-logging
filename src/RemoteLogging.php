@@ -78,10 +78,10 @@ class RemoteLogging
     /**
      * Determine if the exception should be reported.
      *
-     * @param  \Exception  $e
+     * @param  \Throwable  $e
      * @return bool
      */
-    public function shouldReport(Exception $exception)
+    public function shouldReport(Throwable $exception)
     {
         return ! $this->shouldntReport($exception);
     }
@@ -89,10 +89,10 @@ class RemoteLogging
     /**
      * Determine if the exception is in the "do not report" list.
      *
-     * @param  \Exception  $e
+     * @param  \Throwable  $e
      * @return bool
      */
-    protected function shouldntReport(Exception $exception)
+    protected function shouldntReport(Throwable $exception)
     {
         $dontReport = config('remote-logging.dontReport');
 
