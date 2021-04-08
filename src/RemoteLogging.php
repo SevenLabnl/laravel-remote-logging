@@ -63,6 +63,10 @@ class RemoteLogging
 
     public function sendFailedJob($data)
     {
+        if ($this->enabled === false) {
+            return;
+        }
+
         $this->sendTo('projects/error/failed-job', $data);
     }
 
@@ -72,7 +76,7 @@ class RemoteLogging
             $this->client->post($path, [
                 'form_params' => $data
             ]);
-        } catch (Exception $e) { }
+        } catch (Throwable $e) { }
     }
 
     /**
