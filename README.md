@@ -39,4 +39,4 @@ By default it will send all errors and failed jobs that occur into your applicat
 ## Credits
 - [Niels Kramer](https://github.com/nielskramerr)
 - [Joey Houtenbos](https://github.com/JoeyHoutenbos)
-- [All Contributors](https://github.com/SevenLab/laravel-remote-logging/contributors)
+- [All Contributors](https://github.com/SevenLabnl/laravel-remote-logging/contributors)
