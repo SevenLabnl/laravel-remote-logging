@@ -1,21 +1,21 @@
 {
-    "name": "7lab/laravel-remote-logging",
+    "name": "sevenlab/laravel-remote-logging",
     "description": "Log errors to a remote server",
     "keywords": [
-        "7lab",
+        "sevenlab",
         "laravel-remote-logging",
         "laravel",
         "logging",
         "remote-logging",
         "remote"
     ],
-    "homepage": "https://github.com/7lab/laravel-remote-logging",
+    "homepage": "https://github.com/sevenlabnl/laravel-remote-logging",
     "license": "MIT",
     "authors": [
         {
             "name": "Niels Kramer",
-            "email": "niels@7lab.nl",
-            "homepage": "https://www.7lab.nl",
+            "email": "niels@sevenlab.nl",
+            "homepage": "https://www.sevenlab.nl",
             "role": "Developer"
         }
     ],

@@ -1,6 +1,6 @@
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/7Lab/laravel-remote-logging.svg?style=flat-square)](https://packagist.org/packages/7Lab/laravel-remote-logging)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/SevenLab/laravel-remote-logging.svg?style=flat-square)](https://packagist.org/packages/SevenLab/laravel-remote-logging)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Total Downloads](https://img.shields.io/packagist/dt/7Lab/laravel-remote-logging.svg?style=flat-square)](https://packagist.org/packages/7Lab/laravel-remote-logging)
+[![Total Downloads](https://img.shields.io/packagist/dt/SevenLab/laravel-remote-logging.svg?style=flat-square)](https://packagist.org/packages/SevenLab/laravel-remote-logging)
 
 # Remote logging
 This Laravel package send the errors or failed jobs occuring in your application to an external server. 
@@ -11,7 +11,7 @@ For the failed jobs logging we are extending [spatie/laravel-failed-job-monitor]
 ## Installation
 You can install the package via Composer:
 ```bash
-composer require 7Lab/laravel-remote-logging
+composer require sevenlab/laravel-remote-logging
 ```
 
 The package will automatically register itself.
@@ -39,4 +39,4 @@ By default it will send all errors and failed jobs that occur into your applicat
 ## Credits
 - [Niels Kramer](https://github.com/nielskramerr)
 - [Joey Houtenbos](https://github.com/JoeyHoutenbos)
-- [All Contributors](https://github.com/7lab/laravel-remote-logging/contributors)
+- [All Contributors](https://github.com/SevenLab/laravel-remote-logging/contributors)
